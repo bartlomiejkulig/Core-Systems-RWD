@@ -71,23 +71,35 @@ $(document).ready(function() {
 
 
 // #########  Shoiwng elements section 2 #######
+$(document).ready(function() {
 
+  var $part1 = $(".section-two-part-1-content");
+  var $part2 = $(".section-two-part-2-content")
+  var topPosition1 = $("#section-two-part-1").offset().top;
+  var topPosition2 = $("#section-two-part-2").offset().top;
 
-$(".section-two-part-1-content").hide();
-$(".section-two-part-2-content").hide();
-var topPosition1 = $("#section-two-part-1").offset().top;
-var topPosition2 = $("#section-two-part-2").offset().top;
-$(window).on("scroll", function(event) {
-  var scrolling = $(document).scrollTop()+$(window).height();
+  $part1.hide();
+  $part2.hide();
 
-  if (scrolling  > topPosition1 + 200) {
-      $(".section-two-part-1-content").fadeIn(1000);
-  }
+  $(window).on("scroll resize", function(event) {
+    var scrolling = $(document).scrollTop()+$(window).height();
 
-  if (scrolling > topPosition2 + 200) {
-      $(".section-two-part-2-content").fadeIn(1000);
-  }
+    if (window.matchMedia("(max-width: 991px)").matches) {
+        $part1.show();
+    }
+    else if (scrolling  > topPosition1 + 500) {
+      $part1.fadeIn(1000);
+    }
+
+    if (window.matchMedia("(max-width: 991px)").matches) {
+        $part2.show();
+    }
+    else if (scrolling  > topPosition2 + 500) {
+      $part2.fadeIn(1000);
+    }
+  });
 
 });
+
 
 // ######################
